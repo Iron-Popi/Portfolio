@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&family=Montserrat:wght@300&display=swap");
+
+/* Basic styling */
+
+body {
+  background-color: #1c262e;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.small {
+  font-size: 3rem;
+}
+
+.big {
+  margin: 5% 0%;
+}
+
+h1, h2, h3, p {
+  font-family: Montserrat;
+}
+
+h1 {
+  font-size: 3em;
+  color: #85ebd9;
+}
+
+h2 {
+  font-size: 2.5em;
+  color: #e2dddf;
+}
+
+h3 {
+  font-size: 1.5em;
+  color: #3d898d;
+}
+
+p {
+  font-size: 1.3em;
+  color: #e2dddf;
+}
+
+a {
+  font-size: 1em;
+  font-family: Comfortaa;
+  font-style: bold;
+  color: #b0acb0;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #c6e2ff;
+  text-shadow: 0 0 2px rgba(202, 228, 225, 0.92),
+    0 0 10px rgba(202, 228, 225, 0.34), 0 0 4px rgba(30, 132, 242, 0.52),
+    0 0 7px rgba(30, 132, 242, 0.92), 0 0 11px rgba(30, 132, 242, 0.78),
+    0 0 16px rgba(30, 132, 242, 0.92);
+}
+
+.logo {
+  height: 35px;
+}
+
+.icon {
+  padding: 10px;
+  height: 25px;
+}
+
+.icon:hover {
+  animation: flicker2 0.08s infinite alternate;
+  border-radius: 25%;
+}
+
+hr {
+  width: 50%;
+  animation: flicker 1s infinite alternate;
+  border-color:#fffdc6;
+}
+
+section {
+  padding: 3%;
+}
+
+.intro {
+  width: 75%;
+}
+
+fieldset {
+  margin: 18%;
+}
+
+legend {
+  padding: 3px;
+}
+
+legend p {
+  margin: 5px;
+}
+
+.code {
+  border: 1px solid #575267;
+  border-radius: 1rem;
+}
+
+.contact {
+  padding: 2%;
+}
+
+.neon {
+  font-size: 4rem;
+  color: #e9ffff;
+  margin: 2rem;
+  padding: 0% 5%;
+  border: 0.4rem solid #fffdc6;
+  border-radius: 2rem;
+  animation: flicker 2.5s infinite alternate;
+}
+
+.neon p {
+  font-family: Comfortaa;
+  color: rgb(231, 245, 255);
+  animation: neon 0.08s ease-in-out infinite alternate;
+}
+
+.links {
+    margin-bottom: 20%;
+}
+
+/* Animations start */
+
+/* Set neon color */
+:root {
+  --neon-color: #ff6e27;
+  --neon-color2: #65dc98;
+}
+
+/* Animate flicker */
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    box-shadow: 0 0 0.5rem #fff, inset 0 0 0.5rem #fff,
+      0 0 1.5rem var(--neon-color), inset 0 0 1rem var(--neon-color),
+      0 0 2.5rem var(--neon-color), inset 0 0 2rem var(--neon-color);
+  }
+
+  20%, 24%, 55% {
+    text-shadow: none;
+    box-shadow: none;
+  }
+}
+
+/* Animate flicker2 */
+@keyframes flicker2 {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    box-shadow: 0 0 0.25rem #fff, inset 0 0 0.5rem #fff,
+      0 0 1rem var(--neon-color2), inset 0 0 0.5rem var(--neon-color2),
+      0 0 2.5rem var(--neon-color2), inset 0 0 1rem var(--neon-color2);
+  }
+
+  20%, 24%, 55% {
+    text-shadow: none;
+    box-shadow: none;
+  }
+}
+
+/* Animate neon */
+@keyframes neon {
+  from {
+    text-shadow: 0 0 6px rgba(202, 228, 225, 0.92),
+      0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(30, 132, 242, 0.52),
+      0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(30, 132, 242, 0.78),
+      0 0 54px rgba(30, 132, 242, 0.92);
+  }
+  to {
+    text-shadow: 0 0 6px rgba(202, 228, 225, 0.98),
+      0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(30, 132, 242, 0.58),
+      0 0 22px rgba(30, 132, 242, 0.84), 0 0 38px rgba(30, 132, 242, 0.88),
+      0 0 60px rgba(30, 132, 242, 1);
+  }
+}
+
+/* flipping cards start */
+.card {
+  position: relative;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  transform: translate(-50%);
+  transform-style: preserve-3d;
+  perspective: 600px;
+  transition: 0.5s;
+}
+
+.card:hover .card-front {
+  transform: rotateX(-180deg);
+}
+
+.card:hover .card-back {
+  transform: rotateX(0deg);
+}
+
+.card-front {
+  height: 100%;
+  width: 100%;
+  background: cover;
+  backface-visibility: hidden;
+  transform: rotateX(0deg);
+  transition: 0.5s;
+}
+
+.card-back {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(https://lh3.googleusercontent.com/proxy/VDFRTpFb-wYTqUMxDnP3EnldVwCinLzdD78hVyogOXsmXq5avzZPunhY-IyQbVLGI-0f_vVyYCrFVyEQpr2HEz34XIjVmJkF1sTWeUFW-O-xVRETvg14YZlMNdmpn4_XdzgXZs3ZZwKgJw);
+  background-size: cover;
+  backface-visibility: hidden;
+  transform: rotateX(180deg);
+  transition: 0.5s;
+  color: #ffffff;
+  text-align: center;
+}
+
+.card-front img {
+  width: 100%;
+}
+/* Animations end */
+
+/* Responsive design */
+@media (max-width: 1000px) {
+    .neon {
+        margin: 0.5rem;
+        padding: 0% 2%;
+    }
+    .big {
+        font-size: 2.5rem;
+    }
+    .small {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 20%;
+    }
+    h3 {
+        font-size: 1.25rem;
+    }
+    .intro {
+       display: none;
+    }
+    .card {
+        width: 80%;
+    }
+    .to-be-hidden {
+        display: none;
+    }
+    .links {
+        margin-bottom: 10%;
+    }
+    .logo {
+        height: 25px;
+    }
+    fieldset {
+        display: none;
+    }
+}
